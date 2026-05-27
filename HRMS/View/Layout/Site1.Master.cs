@@ -14,16 +14,22 @@ namespace Lean.View.Layout
     public partial class Site1 : System.Web.UI.MasterPage
     {
         protected string UserId = null;
-
-        private static bool IsStandaloneDocumentMenu(string menuName, string menuLink)
+        private static int GetOnboardingSubMenuOrder(string subMenuName)
         {
-            string safeName = (menuName ?? string.Empty).Trim();
-            string safeLink = (menuLink ?? string.Empty).Trim();
-            bool isDocumentByName = safeName.Equals("Document", StringComparison.OrdinalIgnoreCase)
-                                    || safeName.Equals("Documents", StringComparison.OrdinalIgnoreCase);
-            bool isDocumentByLink = safeLink.IndexOf("/View/Modules/useruploaddocuments.aspx", StringComparison.OrdinalIgnoreCase) >= 0
-                                    || safeLink.IndexOf("/View/Modules/viewuserdocuments.aspx", StringComparison.OrdinalIgnoreCase) >= 0;
-            return isDocumentByName || isDocumentByLink;
+            string name = (subMenuName ?? string.Empty).Trim();
+            if (name.Equals("Employee Registration", StringComparison.OrdinalIgnoreCase)) return 1;
+            if (name.Equals("Employee List", StringComparison.OrdinalIgnoreCase)) return 2;
+            if (name.Equals("Remuneration Form", StringComparison.OrdinalIgnoreCase)) return 3;
+            if (name.Equals("Document", StringComparison.OrdinalIgnoreCase)) return 4;
+            return 999;
+        }
+        private static int GetMainMenuOrder(string menuName)
+        {
+            string name = (menuName ?? string.Empty).Trim();
+            if (name.Equals("Home", StringComparison.OrdinalIgnoreCase)) return 1;
+            if (name.Equals("Employee Onboarding", StringComparison.OrdinalIgnoreCase)) return 2;
+            if (name.Equals("Salary Slip", StringComparison.OrdinalIgnoreCase)) return 3;
+            return 999;
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -160,9 +166,10 @@ namespace Lean.View.Layout
                         string menuLink = (x.MenuLink ?? string.Empty).Trim();
                         bool isHomeByName = string.Equals(menuName, "Home", StringComparison.OrdinalIgnoreCase);
                         bool isHomeByLink = menuLink.IndexOf("/View/Modules/Home.aspx", StringComparison.OrdinalIgnoreCase) >= 0;
-                        bool isStandaloneDocument = IsStandaloneDocumentMenu(menuName, menuLink);
-                        return !isHomeByName && !isHomeByLink && !isStandaloneDocument;
+                        return !isHomeByName && !isHomeByLink;
                     })
+                    .OrderBy(x => GetMainMenuOrder(x.Menu))
+                    .ThenBy(x => (x.Menu ?? string.Empty).Trim())
                     .ToList();
 
                 foreach (var menu in menuDataList)
@@ -173,9 +180,14 @@ namespace Lean.View.Layout
                         .Where(s =>
                         {
                             string subMenuName = (s.SubMenu ?? string.Empty).Trim();
-                            string subMenuLink = (s.SubMenuLink ?? string.Empty).Trim();
-                            return !IsStandaloneDocumentMenu(subMenuName, subMenuLink);
+                            return !subMenuName.Equals("Update Probation Periodflag", StringComparison.OrdinalIgnoreCase);
                         })
+                        .OrderBy(s =>
+                        {
+                            bool isOnboarding = string.Equals((menu.Menu ?? string.Empty).Trim(), "Employee Onboarding", StringComparison.OrdinalIgnoreCase);
+                            return isOnboarding ? GetOnboardingSubMenuOrder(s.SubMenu) : 999;
+                        })
+                        .ThenBy(s => (s.SubMenu ?? string.Empty).Trim())
                         .ToList();
                 }
                 rptMainAndSubMenu.DataSource = menuDataList;
@@ -198,9 +210,7 @@ namespace Lean.View.Layout
                     string menuLink = (menuData.MenuLink ?? string.Empty).Trim();
                     bool isHomeByName = string.Equals(menuName, "Home", StringComparison.OrdinalIgnoreCase);
                     bool isHomeByLink = menuLink.IndexOf("/View/Modules/Home.aspx", StringComparison.OrdinalIgnoreCase) >= 0;
-                    bool isStandaloneDocument = IsStandaloneDocumentMenu(menuName, menuLink);
-
-                    if (isHomeByName || isHomeByLink || isStandaloneDocument)
+                    if (isHomeByName || isHomeByLink)
                     {
                         e.Item.Visible = false;
                         return;

@@ -45,6 +45,7 @@
     <Compile Include="changePassDO.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CommonDO.cs" />
+    <Compile Include="EmployeeLeaveListDO.cs" />
     <Compile Include="LoginBO.cs" />
     <Compile Include="LoginDO.cs" />
     <Compile Include="MenuDO.cs" />

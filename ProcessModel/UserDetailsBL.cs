@@ -111,6 +111,65 @@ namespace ProcessModel
             return listdata;
         }
 
+        public List<UserDetailsDO> SaveUserDetailsMainDb(UserDetailsDO user)
+        {
+            List<UserDetailsDO> listdata = new List<UserDetailsDO>();
+            getDrtolist getDrtolistParam = new getDrtolist();
+            List<MySqlParameter> mysqlParameters = new List<MySqlParameter>();
+
+            try
+            {
+                mysqlParameters.Add(DataClass.GetParameter("p_type", "InsertUser"));
+                mysqlParameters.Add(DataClass.GetParameter("p_Username", user.Username));
+                mysqlParameters.Add(DataClass.GetParameter("p_user_fullname", user.user_fullname));
+                mysqlParameters.Add(DataClass.GetParameter("p_user_mail_id", user.user_mail_id));
+                mysqlParameters.Add(DataClass.GetParameter("p_password", user.password));
+                mysqlParameters.Add(DataClass.GetParameter("p_employee_code", user.EmployeeCode));
+                mysqlParameters.Add(DataClass.GetParameter("p_contact_detail", user.contact_detail));
+                mysqlParameters.Add(DataClass.GetParameter("p_insertedby", user.Insertedby));
+                mysqlParameters.Add(DataClass.GetParameter("p_user_type", user.user_type));
+                mysqlParameters.Add(DataClass.GetParameter("p_designation_id", user.designation_id));
+                mysqlParameters.Add(DataClass.GetParameter("p_company_id", user.company_id));
+                mysqlParameters.Add(DataClass.GetParameter("p_ESIC_no", user.ESIC_no));
+                mysqlParameters.Add(DataClass.GetParameter("p_PF_no", user.PF_no));
+                mysqlParameters.Add(DataClass.GetParameter("p_department", user.department));
+                mysqlParameters.Add(DataClass.GetParameter("p_branch", user.branch));
+                mysqlParameters.Add(DataClass.GetParameter("p_division", user.division));
+                mysqlParameters.Add(DataClass.GetParameter("p_date_of_joining", user.date_of_joining));
+                mysqlParameters.Add(DataClass.GetParameter("p_probation_period_months", user.probation_period_months));
+                mysqlParameters.Add(DataClass.GetParameter("p_reporting_manager", user.reporting_manager));
+                mysqlParameters.Add(DataClass.GetParameter("p_employee_type", user.employee_type));
+
+                listdata = getDrtolistParam.getdatafromreder<UserDetailsDO>(
+                    DataClass.GetDataReaderFromSpWithParam(mysqlParameters, DBName, "Sp_insertuser")
+                );
+            }
+            catch (Exception ex)
+            {
+                CommonBL errorlog = new CommonBL();
+                errorlog.fnStoreErrorLog(
+                    "UserDetailsBL",
+                    "SaveUserDetailsMainDb",
+                    "Exception Message: " + ex.Message + " | StackTrace=" + ex.StackTrace,
+                    UserId
+                );
+            }
+
+            if (listdata == null || listdata.Count == 0)
+            {
+                listdata = new List<UserDetailsDO>
+                {
+                    new UserDetailsDO
+                    {
+                        Status = "Failed",
+                        Remarks = "User save did not return any response from database."
+                    }
+                };
+            }
+
+            return listdata;
+        }
+
         private bool IsSuccessResponse(List<UserDetailsDO> response)
         {
             if (response == null || response.Count == 0)
@@ -294,6 +353,104 @@ namespace ProcessModel
             }
 
             return listdata;
+        }
+
+        public List<UserDetailsDO> UpdateUserDetailsMainDb(UserDetailsDO user)
+        {
+            List<UserDetailsDO> listdata = new List<UserDetailsDO>();
+            getDrtolist getDrtolistParam = new getDrtolist();
+            List<MySqlParameter> mysqlParameters = new List<MySqlParameter>();
+
+            try
+            {
+                mysqlParameters.Add(DataClass.GetParameter("p_user_id", user.UserId));
+                mysqlParameters.Add(DataClass.GetParameter("p_Username", user.Username));
+                mysqlParameters.Add(DataClass.GetParameter("p_user_fullname", user.user_fullname));
+                mysqlParameters.Add(DataClass.GetParameter("p_user_mail_id", user.user_mail_id));
+                mysqlParameters.Add(DataClass.GetParameter("p_contact_detail", user.contact_detail));
+                mysqlParameters.Add(DataClass.GetParameter("p_updatedby", user.UserId));
+                mysqlParameters.Add(DataClass.GetParameter("p_designation_id", user.designation_id));
+                mysqlParameters.Add(DataClass.GetParameter("p_employee_code", user.EmployeeCode));
+                mysqlParameters.Add(DataClass.GetParameter("@p_company_id", user.company_id));
+                mysqlParameters.Add(DataClass.GetParameter("@p_ESIC_no", user.ESIC_no));
+                mysqlParameters.Add(DataClass.GetParameter("@p_PF_no", user.PF_no));
+                mysqlParameters.Add(DataClass.GetParameter("@p_department", user.department));
+                mysqlParameters.Add(DataClass.GetParameter("@p_branch", user.branch));
+                mysqlParameters.Add(DataClass.GetParameter("@p_division", user.division));
+                mysqlParameters.Add(DataClass.GetParameter("@p_date_of_joining", user.date_of_joining));
+                mysqlParameters.Add(DataClass.GetParameter("@p_probation_period_months", user.probation_period_months));
+                mysqlParameters.Add(DataClass.GetParameter("@p_reporting_manager", user.reporting_manager));
+                mysqlParameters.Add(DataClass.GetParameter("@p_employee_type", user.employee_type));
+                mysqlParameters.Add(DataClass.GetParameter("p_type", "UpdateUser"));
+
+                listdata = getDrtolistParam.getdatafromreder<UserDetailsDO>(
+                    DataClass.GetDataReaderFromSpWithParam(mysqlParameters, DBName, "Sp_updateuser")
+                );
+            }
+            catch (Exception ex)
+            {
+                CommonBL errorlog = new CommonBL();
+                errorlog.fnStoreErrorLog(
+                    "UserDetailsBL",
+                    "UpdateUserDetailsMainDb",
+                    "Exception Message: " + ex.Message + " | StackTrace=" + ex.StackTrace,
+                    UserId
+                );
+            }
+
+            if (listdata == null || listdata.Count == 0)
+            {
+                listdata = new List<UserDetailsDO>
+                {
+                    new UserDetailsDO
+                    {
+                        Status = "Failed",
+                        Remarks = "Update response not received from primary database."
+                    }
+                };
+            }
+
+            return listdata;
+        }
+
+        public List<UserDetailsDO> UpdateUserDetailsSecondary(UserDetailsDO user)
+        {
+            List<MySqlParameter> mysqlParameters = new List<MySqlParameter>();
+
+            mysqlParameters.Add(DataClass.GetParameter("p_user_id", user.UserId));
+            mysqlParameters.Add(DataClass.GetParameter("p_Username", user.Username));
+            mysqlParameters.Add(DataClass.GetParameter("p_user_fullname", user.user_fullname));
+            mysqlParameters.Add(DataClass.GetParameter("p_user_mail_id", user.user_mail_id));
+            mysqlParameters.Add(DataClass.GetParameter("p_contact_detail", user.contact_detail));
+            mysqlParameters.Add(DataClass.GetParameter("p_updatedby", user.UserId));
+            mysqlParameters.Add(DataClass.GetParameter("p_designation_id", user.designation_id));
+            mysqlParameters.Add(DataClass.GetParameter("p_employee_code", user.EmployeeCode));
+            mysqlParameters.Add(DataClass.GetParameter("@p_company_id", user.company_id));
+            mysqlParameters.Add(DataClass.GetParameter("@p_ESIC_no", user.ESIC_no));
+            mysqlParameters.Add(DataClass.GetParameter("@p_PF_no", user.PF_no));
+            mysqlParameters.Add(DataClass.GetParameter("@p_department", user.department));
+            mysqlParameters.Add(DataClass.GetParameter("@p_branch", user.branch));
+            mysqlParameters.Add(DataClass.GetParameter("@p_division", user.division));
+            mysqlParameters.Add(DataClass.GetParameter("@p_date_of_joining", user.date_of_joining));
+            mysqlParameters.Add(DataClass.GetParameter("@p_probation_period_months", user.probation_period_months));
+            mysqlParameters.Add(DataClass.GetParameter("@p_reporting_manager", user.reporting_manager));
+            mysqlParameters.Add(DataClass.GetParameter("@p_employee_type", user.employee_type));
+            mysqlParameters.Add(DataClass.GetParameter("p_type", "UpdateUser"));
+
+            List<UserDetailsDO> secondaryResult = UpdateUserDetailsUsingSqlConnection(mysqlParameters);
+            if (secondaryResult == null || secondaryResult.Count == 0)
+            {
+                secondaryResult = new List<UserDetailsDO>
+                {
+                    new UserDetailsDO
+                    {
+                        Status = "Failed",
+                        Remarks = "Update response not received from secondary database."
+                    }
+                };
+            }
+
+            return secondaryResult;
         }
 
         private List<UserDetailsDO> UpdateUserDetailsUsingSqlConnection(List<MySqlParameter> mysqlParameters)
@@ -547,6 +704,13 @@ namespace ProcessModel
             return users;
         }
 
+        public List<UserDetailsDO> ViewAllUsersMainDb()
+        {
+            List<UserDetailsDO> users = GetAllUsersFallbackFromPrimary();
+            EnrichDesignationName(users);
+            return users;
+        }
+
         private void EnrichDesignationName(List<UserDetailsDO> users)
         {
             if (users == null || users.Count == 0)
@@ -654,12 +818,7 @@ namespace ProcessModel
                 List<MySqlParameter> sqlParameters = new List<MySqlParameter>();
                 sqlParameters.Add(DataClass.GetParameter("@p_type", "GetAllUser"));
                 users = getDrtolistParam.getdatafromreder<UserDetailsDO>(
-                    DataClass.GetDataReaderFromSpWithParam(sqlParameters, DBName, "Sp_getalluser_hrms"));
-                if (users == null || users.Count == 0)
-                {
-                    users = getDrtolistParam.getdatafromreder<UserDetailsDO>(
-                        DataClass.GetDataReaderFromSpWithParam(sqlParameters, DBName, "Sp_getalluser"));
-                }
+                    DataClass.GetDataReaderFromSpWithParam(sqlParameters, DBName, "Sp_getalluser"));
             }
             catch (Exception ex)
             {

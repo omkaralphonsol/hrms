@@ -48,33 +48,20 @@ namespace HRMS.View.Modules
         {
             try
             {
-                UserDetailsBL userBL = new UserDetailsBL();
-                var users = userBL.ViewAllUsers().OrderByDescending(u => u.UserId).ToList();
-                var resignationRows = GetResignationsFromAPI();
+                int reportingManagerId = Convert.ToInt32(Session["userId"]);
+                HandoverprocessBL resignationBL = new HandoverprocessBL();
+                var resignations = resignationBL.GetEmployeeResignationDetails(reportingManagerId)
+                    .OrderByDescending(x => x.EmployeeResignationId)
+                    .ToList();
 
-                var resignationMap = resignationRows
-                    .GroupBy(r => r.UserId)
-                    .ToDictionary(g => g.Key, g => g.First());
-
-                var resignations = users.Select(u =>
+                foreach (var row in resignations)
                 {
-                    ResignationDO r;
-                    resignationMap.TryGetValue(u.UserId, out r);
+                    row.last_working_date_display = row.last_working_date == DateTime.MinValue
+                        ? "-"
+                        : row.last_working_date.ToString("yyyy-MM-dd");
+                }
 
-                    return new ResignationDO
-                    {
-                        EmployeeResignationId = r != null ? r.EmployeeResignationId : 0,
-                        UserId = u.UserId,
-                        EmployeeName = u.user_fullname,
-                        EmployeeEmail = u.user_mail_id,
-                        resignation_date = r != null ? r.resignation_date : DateTime.MinValue,
-                        notice_period_days = r != null ? r.notice_period_days : 0,
-                        last_working_date = r != null ? r.last_working_date : DateTime.MinValue,
-                        reason = r != null ? r.reason : "-",
-                        hr_status = r != null ? r.hr_status : "Pending",
-                        last_working_date_display = r != null ? r.last_working_date_display : "-"
-                    };
-                }).ToList();
+                Session["ResignationListData"] = resignations;
 
                 ApplySorting(ref resignations); 
 
@@ -275,7 +262,12 @@ namespace HRMS.View.Modules
         {
             try
             {
-                var resignations = GetResignationsFromAPI();
+                var resignations = Session["ResignationListData"] as List<ResignationDO>;
+                if (resignations == null)
+                {
+                    int reportingManagerId = Convert.ToInt32(Session["userId"]);
+                    resignations = new HandoverprocessBL().GetEmployeeResignationDetails(reportingManagerId);
+                }
                 var resignation = resignations.FirstOrDefault(r => r.EmployeeResignationId == resignationId);
 
                 if (resignation == null || string.IsNullOrEmpty(resignation.EmployeeEmail))
@@ -341,12 +333,13 @@ namespace HRMS.View.Modules
 
         public int TotalRecordCount()
         {
-
-            UserDetailsDO userDO = new UserDetailsDO();
-            UserDetailsBL userbl = new UserDetailsBL();
-            List<UserDetailsDO> users = userbl.ViewAllUsers();
-
-            return users.Count;
+            var resignations = Session["ResignationListData"] as List<ResignationDO>;
+            if (resignations == null)
+            {
+                int reportingManagerId = Convert.ToInt32(Session["userId"]);
+                resignations = new HandoverprocessBL().GetEmployeeResignationDetails(reportingManagerId);
+            }
+            return resignations.Count;
         }
         protected void ddlPageSelector_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -395,10 +388,14 @@ namespace HRMS.View.Modules
         }
         protected void gridview_Sorting(object sender, GridViewSortEventArgs e)
         {
-            UserDetailsBL userDetailsBL = new UserDetailsBL();
             try
             {
-                List<UserDetailsDO> createdet = userDetailsBL.ViewAllUsers();
+                List<ResignationDO> createdet = Session["ResignationListData"] as List<ResignationDO>;
+                if (createdet == null)
+                {
+                    int reportingManagerId = Convert.ToInt32(Session["userId"]);
+                    createdet = new HandoverprocessBL().GetEmployeeResignationDetails(reportingManagerId);
+                }
 
                 if (createdet != null)
                 {

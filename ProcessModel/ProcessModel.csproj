@@ -99,6 +99,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CommonBL.cs" />
     <Compile Include="DataClass.cs" />
+    <Compile Include="EmployeeLeaveBL.cs" />
     <Compile Include="HandoverprocessBL.cs" />
     <Compile Include="LoginBAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,6 +13,23 @@ namespace HRMS.View.Modules
     {
         protected string UserId = null;
         public static List<UserDetailsDO> userDo = new List<UserDetailsDO>();
+        private bool IsEmployeeFlow
+        {
+            get
+            {
+                return string.Equals(
+                    Convert.ToString(Request.QueryString["flow"] ?? string.Empty).Trim(),
+                    "employee",
+                    StringComparison.OrdinalIgnoreCase
+                );
+            }
+        }
+
+        private List<UserDetailsDO> GetUsersForCurrentFlow()
+        {
+            UserDetailsBL userBL = new UserDetailsBL();
+            return IsEmployeeFlow ? userBL.ViewAllUsers() : userBL.ViewAllUsersMainDb();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             UserId = Convert.ToString(Session["userId"]);
@@ -25,6 +42,7 @@ namespace HRMS.View.Modules
                 }
                 Session["CurrentPageIndex"] = 0;
                 Session["AdvSearchResViewUser"] = null;
+                ApplyFlowLabels();
 
                 BindGridView();
                 BindUsername();
@@ -32,12 +50,26 @@ namespace HRMS.View.Modules
 
             }
         }
+
+        private void ApplyFlowLabels()
+        {
+            if (IsEmployeeFlow)
+            {
+                btn_adduser.Attributes["title"] = "Add Employee";
+                btn_adduser.InnerHtml = "<i class=\"fas fa-user-plus\"></i>&nbsp;Add Employee";
+            }
+            else
+            {
+                btn_adduser.Attributes["title"] = "Add User";
+                btn_adduser.InnerHtml = "<i class=\"fas fa-user-plus\"></i>&nbsp;Add User";
+            }
+        }
         public void BindUsername()
         {
             try
             {
                 UserDetailsBL userBL = new UserDetailsBL();
-                List<UserDetailsDO> users = userBL.ViewAllUsers();
+                List<UserDetailsDO> users = GetUsersForCurrentFlow();
 
                 ddl_username.Items.Clear();
                 if (users != null && users.Count > 0)
@@ -73,7 +105,7 @@ namespace HRMS.View.Modules
             try
             {
                 UserDetailsBL userBL = new UserDetailsBL();
-                List<UserDetailsDO> users = userBL.ViewAllUsers();
+                List<UserDetailsDO> users = GetUsersForCurrentFlow();
 
                 ddl_employeeCode.Items.Clear();
                 if (users != null && users.Count > 0)
@@ -309,7 +341,14 @@ namespace HRMS.View.Modules
                     string[] args = Convert.ToString(e.CommandArgument).Split('|');
                     string userId = args.Length > 0 ? args[0] : "0";
                     string employeeCode = args.Length > 1 ? args[1] : string.Empty;
-                    Response.Redirect("Adduser.aspx?user_id=" + userId + "&emp_code=" + HttpUtility.UrlEncode(employeeCode) + "&mode=edit", false);
+                    if (IsEmployeeFlow)
+                    {
+                        Response.Redirect("AddEmployee.aspx?user_id=" + userId + "&emp_code=" + HttpUtility.UrlEncode(employeeCode) + "&mode=edit", false);
+                    }
+                    else
+                    {
+                        Response.Redirect("Adduser.aspx?user_id=" + userId + "&emp_code=" + HttpUtility.UrlEncode(employeeCode) + "&mode=edit", false);
+                    }
                 }
                 else if (e.CommandName == "deleteUser")
                 {
@@ -336,7 +375,7 @@ namespace HRMS.View.Modules
             try
             {
                 UserDetailsBL userDetailsBL = new UserDetailsBL();
-                List<UserDetailsDO> users = userDetailsBL.ViewAllUsers();
+                List<UserDetailsDO> users = GetUsersForCurrentFlow();
                 ApplySorting(ref users);
                 int totalRecords = users.Count;
 
@@ -382,7 +421,7 @@ namespace HRMS.View.Modules
 
             UserDetailsDO userDO = new UserDetailsDO();
             UserDetailsBL userbl = new UserDetailsBL();
-            List<UserDetailsDO> users = userbl.ViewAllUsers();
+            List<UserDetailsDO> users = GetUsersForCurrentFlow();
 
             return users.Count;
         }
@@ -456,7 +495,7 @@ namespace HRMS.View.Modules
             UserDetailsBL userDetailsBL = new UserDetailsBL();
             try
             {
-                List<UserDetailsDO> createdet = userDetailsBL.ViewAllUsers();
+                List<UserDetailsDO> createdet = GetUsersForCurrentFlow();
 
                 if (createdet != null)
                 {
@@ -528,7 +567,14 @@ namespace HRMS.View.Modules
         }
         protected void Button3_ServerClick(object sender, EventArgs e)
         {
-            Response.Redirect("~/view/modules/Adduser.aspx", false);
+            if (IsEmployeeFlow)
+            {
+                Response.Redirect("~/view/modules/AddEmployee.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("~/view/modules/Adduser.aspx", false);
+            }
         }
      
         protected void confirmDeleteButton_Click(object sender, EventArgs e)

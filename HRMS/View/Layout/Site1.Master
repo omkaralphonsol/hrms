@@ -211,34 +211,6 @@
                                     <span>Home</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0);" class="has-arrow waves-effect">
-                                    <i class="bx bx-user-plus"></i>
-                                    <span>Employee Onboarding </span>
-                                </a>
-                                <ul class="sub-menu" aria-expanded="true">
-                                    <li>
-                                        <a href="/View/Modules/Adduser.aspx">Employee Registration</a>
-                                    </li>
-                                    <li>
-                                        <a href="/View/Modules/Viewuser.aspx">Employee List</a>
-                                    </li>
-                                    <li>
-                                        <a href="/View/Modules/Remunerationform.aspx">Remuneration Form</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0);" class="has-arrow">Document</a>
-                                        <ul class="sub-menu" aria-expanded="true">
-                                            <li>
-                                                <a href="/View/Modules/useruploaddocuments.aspx">Upload Document</a>
-                                            </li>
-                                            <li>
-                                                <a href="/View/Modules/viewuserdocuments.aspx">View Document</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
                             <asp:Repeater ID="rptMainAndSubMenu" runat="server" OnItemDataBound="rptMainAndSubMenu_ItemDataBound">
                                 <ItemTemplate>
                                     <li runat="server" visible='<%# !string.Equals((Eval("Menu") ?? "").ToString().Trim(), "Home", StringComparison.OrdinalIgnoreCase) && !((Eval("MenuLink") ?? "").ToString().ToLower().Contains("/view/modules/home.aspx")) %>'>
@@ -250,9 +222,22 @@
                                             <asp:Repeater ID="rptSubMenu" runat="server">
                                                 <ItemTemplate>
                                                     <li>
-                                                        <asp:HyperLink ID="SubMenuLink" runat="server" Text='<%# Eval("SubMenu") %>' Key="t-default"
-                                                            NavigateUrl='<%# (Eval("SubMenuLink") != null && !string.IsNullOrEmpty(Eval("SubMenuLink").ToString())) ? Eval("SubMenuLink").ToString() : "" %>'>
-                                                        </asp:HyperLink>
+                                                        <asp:PlaceHolder runat="server" Visible='<%# ((Eval("SubMenu") ?? "").ToString().Trim().ToLower() == "document") %>'>
+                                                            <a href="javascript:void(0);" class="has-arrow" key="t-default">Document</a>
+                                                            <ul class="sub-menu" aria-expanded="true">
+                                                                <li>
+                                                                    <a href='<%# (Eval("SubMenuLink") != null && !string.IsNullOrWhiteSpace(Eval("SubMenuLink").ToString())) ? Eval("SubMenuLink").ToString() : "/View/Modules/useruploaddocuments.aspx" %>' key="t-default">Upload Document</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="/View/Modules/viewdetailsforprobationperiod.aspx" key="t-default">Update Probation Period</a>
+                                                                </li>
+                                                            </ul>
+                                                        </asp:PlaceHolder>
+                                                        <asp:PlaceHolder runat="server" Visible='<%# !((Eval("SubMenu") ?? "").ToString().Trim().ToLower() == "document") && !((Eval("SubMenu") ?? "").ToString().Trim().ToLower() == "update probation period") %>'>
+                                                            <asp:HyperLink ID="SubMenuLink" runat="server" Text='<%# Eval("SubMenu") %>' Key="t-default"
+                                                                NavigateUrl='<%# (Eval("SubMenuLink") != null && !string.IsNullOrWhiteSpace(Eval("SubMenuLink").ToString())) ? Eval("SubMenuLink").ToString() : "" %>'>
+                                                            </asp:HyperLink>
+                                                        </asp:PlaceHolder>
 
                                                         <%--<ul class="sub-sub-menu" aria-expanded="true">
                                                             <asp:Repeater ID="rptSubSubMenu" runat="server">

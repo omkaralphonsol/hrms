@@ -313,8 +313,8 @@
                             </button>
                             &nbsp;
        
-                            <button runat="server" id="btn_adduser" onserverclick="Button3_ServerClick" class="btn btn-primary ms-2" title="Add Employee">
-                                <i class="fas fa-user-plus"></i>&nbsp;Add Employee
+                            <button runat="server" id="btn_adduser" onserverclick="Button3_ServerClick" class="btn btn-primary ms-2" title="Add User">
+                                <i class="fas fa-user-plus"></i>&nbsp;Add User
         
                             </button>
                             <asp:Button ID="btnBack1" runat="server" CssClass="btn btn-secondary" Text="Back" Visible="false" OnClick="btnBack1_click" />

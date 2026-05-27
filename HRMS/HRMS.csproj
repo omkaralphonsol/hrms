@@ -1725,14 +1725,19 @@
     <Content Include="View\Authentication\setPassword.aspx" />
     <Content Include="View\Authentication\verifyOTP.aspx" />
     <Content Include="View\Modules\AddBioxiasalaryform.aspx" />
+    <Content Include="View\Modules\AddEmployee.aspx" />
+    <Content Include="View\Modules\EmployeeLeaveList.aspx" />
     <Content Include="View\Modules\AddImsetsalaryForm.aspx" />
     <Content Include="View\Modules\Addrole.aspx" />
     <Content Include="View\Modules\AddSalarySlipData.aspx" />
+    <Content Include="View\Modules\AddUser.aspx" />
+    <Content Include="View\Modules\AddUserMain.aspx" />
     <Content Include="View\Modules\Adduser.aspx" />
     <Content Include="View\Modules\adduserdocuments.aspx" />
     <Content Include="View\Modules\AssignRights.aspx" />
     <Content Include="View\Modules\assignRole.aspx" />
     <Content Include="View\Modules\EmployeeAction.aspx" />
+    <Content Include="View\Modules\EmployeeLeaveView.aspx" />
     <Content Include="View\Modules\HandoverProcess.aspx" />
     <Content Include="View\Modules\Home.aspx" />
     <Content Include="View\Modules\LeaveConfiguration.aspx" />
@@ -1823,6 +1828,20 @@
     <Compile Include="View\Modules\AddBioxiasalaryform.aspx.designer.cs">
       <DependentUpon>AddBioxiasalaryform.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Modules\AddEmployee.aspx.cs">
+      <DependentUpon>AddEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Modules\AddEmployee.aspx.designer.cs">
+      <DependentUpon>AddEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modules\EmployeeLeaveList.aspx.cs">
+      <DependentUpon>EmployeeLeaveList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Modules\EmployeeLeaveList.aspx.designer.cs">
+      <DependentUpon>EmployeeLeaveList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Modules\AddImsetsalaryForm.aspx.cs">
       <DependentUpon>AddImsetsalaryForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1843,6 +1862,20 @@
     </Compile>
     <Compile Include="View\Modules\AddSalarySlipData.aspx.designer.cs">
       <DependentUpon>AddSalarySlipData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modules\AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Modules\AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modules\AddUserMain.aspx.cs">
+      <DependentUpon>AddUserMain.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Modules\AddUserMain.aspx.designer.cs">
+      <DependentUpon>AddUserMain.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Modules\Adduser.aspx.cs">
       <DependentUpon>Adduser.aspx</DependentUpon>
@@ -1878,6 +1911,13 @@
     </Compile>
     <Compile Include="View\Modules\EmployeeAction.aspx.designer.cs">
       <DependentUpon>EmployeeAction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Modules\EmployeeLeaveView.aspx.cs">
+      <DependentUpon>EmployeeLeaveView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Modules\EmployeeLeaveView.aspx.designer.cs">
+      <DependentUpon>EmployeeLeaveView.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Modules\HandoverProcess.aspx.cs">
       <DependentUpon>HandoverProcess.aspx</DependentUpon>

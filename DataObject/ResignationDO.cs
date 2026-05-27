@@ -10,6 +10,7 @@ namespace DataObject
     {
         public int EmployeeResignationId { get; set; }
         public int UserId { get; set; }
+        public int reporting_manager { get; set; }
         public string EmployeeName { get; set; }
         public string EmployeeEmail { get; set; }
         public DateTime resignation_date { get; set; }
@@ -17,6 +18,10 @@ namespace DataObject
         public DateTime last_working_date { get; set; }
         public string reason { get; set; }
         public string hr_status { get; set; }
+        public string remarks { get; set; }
+        public DateTime? action_date { get; set; }
+        public string reporting_manager_name { get; set; }
+        public string project_status { get; set; }
 
         public string last_working_date_display { get; set; }
 

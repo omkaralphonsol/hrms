@@ -1,0 +1,65 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hp\\Downloads\\HRMS (3)\\HRMS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A53349E1-CBA5-41D2-A0B9-E4551BB7BA52}|ProcessModel\\ProcessModel.csproj|c:\\users\\hp\\downloads\\hrms (3)\\hrms\\processmodel\\employeeleavebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A53349E1-CBA5-41D2-A0B9-E4551BB7BA52}|ProcessModel\\ProcessModel.csproj|solutionrelative:processmodel\\employeeleavebl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0D7CCD6A-0964-4F19-8BEB-D93109CEFC8C}|HRMS\\HRMS.csproj|C:\\Users\\hp\\Downloads\\HRMS (3)\\HRMS\\hrms\\view\\modules\\addemployee.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{0D7CCD6A-0964-4F19-8BEB-D93109CEFC8C}|HRMS\\HRMS.csproj|solutionrelative:hrms\\view\\modules\\addemployee.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmployeeLeaveBL.cs",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\HRMS (3)\\HRMS\\ProcessModel\\EmployeeLeaveBL.cs",
+              "RelativeDocumentMoniker": "ProcessModel\\EmployeeLeaveBL.cs",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\HRMS (3)\\HRMS\\ProcessModel\\EmployeeLeaveBL.cs",
+              "RelativeToolTip": "ProcessModel\\EmployeeLeaveBL.cs",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAiwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T10:42:37.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddEmployee.aspx",
+              "DocumentMoniker": "C:\\Users\\hp\\Downloads\\HRMS (3)\\HRMS\\HRMS\\View\\Modules\\AddEmployee.aspx",
+              "RelativeDocumentMoniker": "HRMS\\View\\Modules\\AddEmployee.aspx",
+              "ToolTip": "C:\\Users\\hp\\Downloads\\HRMS (3)\\HRMS\\HRMS\\View\\Modules\\AddEmployee.aspx",
+              "RelativeToolTip": "HRMS\\View\\Modules\\AddEmployee.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2026-05-27T07:39:53.335Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
