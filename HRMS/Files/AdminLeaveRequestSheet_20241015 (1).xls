@@ -1,0 +1,25 @@
+<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+	<tr>
+		<td>sr_no</td><td>emp_name</td><td>request_date</td><td>leave_reason</td><td>approval_status</td>
+	</tr><tr>
+		<td>1</td><td>VaishnaviT</td><td>15-10-2024</td><td>testtt</td><td>Pending</td>
+	</tr><tr>
+		<td>2</td><td>VaishnaviT</td><td>14-10-2024</td><td>Leave</td><td>Pending</td>
+	</tr><tr>
+		<td>3</td><td>VaishnaviT</td><td>14-10-2024</td><td>Personal worl</td><td>Reject</td>
+	</tr><tr>
+		<td>4</td><td>VaishnaviT</td><td>11-10-2024</td><td>pooja</td><td>Reject</td>
+	</tr><tr>
+		<td>5</td><td>VaishnaviT</td><td>11-10-2024</td><td>jjjjjjjjjjjjj</td><td>Accept</td>
+	</tr><tr>
+		<td>6</td><td>VaishnaviT</td><td>11-10-2024</td><td>ffffffffff</td><td>Accept</td>
+	</tr><tr>
+		<td>7</td><td>VaishnaviT</td><td>08-10-2024</td><td>Going to nashik</td><td>Accept</td>
+	</tr><tr>
+		<td>8</td><td>VaishnaviT</td><td>01-10-2024</td><td>test</td><td>Accept</td>
+	</tr><tr>
+		<td>9</td><td>VaishnaviT</td><td>01-10-2024</td><td>fff</td><td>Accept</td>
+	</tr><tr>
+		<td>10</td><td>VaishnaviT</td><td>01-10-2024</td><td>Ppppp</td><td>Accept</td>
+	</tr>
+</table>

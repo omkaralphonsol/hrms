@@ -1,0 +1,63 @@
+﻿body {
+}
+.custom-dropdown {
+    padding-right: 25px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /%3E%3C/svg%3E') no-repeat right center;
+    background-size: 16px;
+}
+.time-slot-label.btn {
+    width: 115px;
+}
+
+.btn-group-toggle input[type="radio"] {
+    display: none;
+    background-color: darksalmon;
+    width: 100px;
+}
+
+.btn-outline-primary.time-slot-label {
+    border-color: #dcdada;
+    color: #808080;
+}
+
+.btn-group-toggle label.btn {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-outline-primary.time-slot-label:hover {
+    border-color: lightgrey;
+    color: lightgrey;
+}
+
+.btn-group-toggle label.btn.active {
+    background-color: #0094ff;
+    color: #000000;
+}
+
+.search-box {
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: calc(100% - 40px);
+    display: none;
+}
+.btn-check:checked + .time-slot-label {
+    background-color: #bbb4b4;
+    color: white;
+    border-color: #bbb4b4;
+}
+.custom-dropdown {
+    background-color: white; 
+}
+.input-group-append {
+    display: flex;
+    align-items: center; /* Vertically center the link button */
+}
+
+
+
+

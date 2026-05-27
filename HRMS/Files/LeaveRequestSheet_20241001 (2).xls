@@ -1,0 +1,11 @@
+<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+	<tr>
+		<td>sr_no</td><td>emp_name</td><td>request_date</td><td>leave_reason</td><td>approval_status</td>
+	</tr><tr>
+		<td>1</td><td>VaishnaviT</td><td>01-10-2024</td><td>test</td><td>Pending</td>
+	</tr><tr>
+		<td>2</td><td>VaishnaviT</td><td>01-10-2024</td><td>fff</td><td>Pending</td>
+	</tr><tr>
+		<td>3</td><td>VaishnaviT</td><td>01-10-2024</td><td>Ppppp</td><td>Pending</td>
+	</tr>
+</table>

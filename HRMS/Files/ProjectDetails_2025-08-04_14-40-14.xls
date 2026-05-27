@@ -1,0 +1,9 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr style="font-weight:bold;">
+			<th scope="col">Sr No</th><th scope="col">Project Name</th><th scope="col">Project Description</th><th scope="col">Start Date</th><th scope="col">End Date</th><th scope="col">Attached File</th><th scope="col">Status</th>
+		</tr><tr>
+			<td>1</td><td>Hello Their</td><td>Hello their data</td><td>23-07-2025</td><td>23-07-2025</td><td>EmployeeLoginDetails_2025-07-22_18-02-28</td><td>To Do</td>
+		</tr>
+	</table>
+</div>

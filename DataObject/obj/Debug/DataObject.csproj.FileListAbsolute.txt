@@ -1,0 +1,12 @@
+D:\HRMS_New\HRMS\DataObject\bin\Debug\DataObject.dll
+D:\HRMS_New\HRMS\DataObject\bin\Debug\DataObject.pdb
+D:\HRMS_New\HRMS\DataObject\obj\Debug\DataObject.csproj.AssemblyReference.cache
+D:\HRMS_New\HRMS\DataObject\obj\Debug\DataObject.csproj.CoreCompileInputs.cache
+D:\HRMS_New\HRMS\DataObject\obj\Debug\DataObject.dll
+D:\HRMS_New\HRMS\DataObject\obj\Debug\DataObject.pdb
+C:\Users\hp\Downloads\HRMS (3)\HRMS\DataObject\bin\Debug\DataObject.dll
+C:\Users\hp\Downloads\HRMS (3)\HRMS\DataObject\bin\Debug\DataObject.pdb
+C:\Users\hp\Downloads\HRMS (3)\HRMS\DataObject\obj\Debug\DataObject.csproj.AssemblyReference.cache
+C:\Users\hp\Downloads\HRMS (3)\HRMS\DataObject\obj\Debug\DataObject.csproj.CoreCompileInputs.cache
+C:\Users\hp\Downloads\HRMS (3)\HRMS\DataObject\obj\Debug\DataObject.dll
+C:\Users\hp\Downloads\HRMS (3)\HRMS\DataObject\obj\Debug\DataObject.pdb

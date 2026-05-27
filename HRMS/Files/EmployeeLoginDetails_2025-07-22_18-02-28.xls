@@ -1,0 +1,11 @@
+<div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr style="font-weight:bold;">
+			<th scope="col">Sr No</th><th scope="col">Username</th><th scope="col">Login Date</th><th scope="col">Login Time</th><th scope="col">Logout Time</th>
+		</tr><tr>
+			<td>1</td><td>VaishnaviT</td><td>22-07-2025</td><td>13:29</td><td>17:53</td>
+		</tr><tr>
+			<td>2</td><td>AlphonsolA</td><td>22-07-2025</td><td>12:49</td><td>N/A</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,6 @@
+D:\HRMS_New\HRMS\DataObject\bin\Release\DataObject.dll
+D:\HRMS_New\HRMS\DataObject\bin\Release\DataObject.pdb
+D:\HRMS_New\HRMS\DataObject\obj\Release\DataObject.csproj.AssemblyReference.cache
+D:\HRMS_New\HRMS\DataObject\obj\Release\DataObject.csproj.CoreCompileInputs.cache
+D:\HRMS_New\HRMS\DataObject\obj\Release\DataObject.dll
+D:\HRMS_New\HRMS\DataObject\obj\Release\DataObject.pdb

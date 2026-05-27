@@ -1,0 +1,1041 @@
+<table border='1'><tr><th>Employee Name</th><th>Task ID</th><th>Project Name</th><th>Task</th><th>Task Description</th><th>Start Date</th><th>End Date</th><th>Assigned By</th><th>Status</th></tr><tr><td></td><td>AlphonsolA</td><td></td><td>Test</td><td>test</td><td>test</td><td>09-04-2024</td><td>09-04-2024</td><td>bhagyashree</td></tr><tr><td></td><td>VaishnaviT</td><td></td><td>Healthieu</td><td>test</td><td>test</td><td>09-04-2024</td><td>09-04-2024</td><td>bhagyashree</td></tr><tr><td></td><td>AlphonsolA</td><td></td><td>Healthieu</td><td>test</td><td>test</td><td>09-04-2024</td><td>09-04-2024</td><td>bhagya</td></tr><tr><td></td><td>VaibhavS</td><td></td><td>Test</td><td>TEST</td><td>ASDASDAS</td><td>09-04-2024</td><td>09-05-2024</td><td>bhagyashre</td></tr><tr><td></td><td>Sagar</td><td></td><td>HI code data</td><td>Teav</td><td>Tshs</td><td>09-01-2024</td><td>09-05-2024</td><td>Bhagya</td></tr><tr><td></td><td>AlphonsolA</td><td></td><td>Hello</td><td>Hello project</td><td>h</td><td>08-30-2024</td><td>09-01-2024</td><td>bhagyshree mam</td></tr><tr><td></td><td>AlphonsolA</td><td></td><td>HI code data</td><td>add task</td><td>create page for add task</td><td>08-28-2024</td><td>08-28-2024</td><td>mam</td></tr><tr><td></td><td>AlphonsolA</td><td></td><td>Hello 123</td><td>gfh</td><td>frd</td><td>08-27-2024</td><td>08-27-2024</td><td>mam</td></tr><tr><td></td><td>ArohiT</td><td></td><td>&nbsp;</td><td>Task New</td><td>update</td><td>08-22-2024</td><td>08-22-2024</td><td>mam</td></tr><tr><td></td><td>AlphonsolA</td><td></td><td>Test</td><td>hello project</td><td>hhhhhh</td><td>08-22-2024</td><td>08-22-2024</td><td> mam</td></tr></table>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="\View\Modules\accessPopup.js"></script>
+    <meta charset="utf-8" /><title>
+	Alphonsol - Admin
+</title><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" />
+    <!-- Bootstrap Css -->
+    <!-- Bootstrap Css -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="../../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="../../assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <script src="../../assets/js/commonFunctions.js"></script>
+    ;[[
+    <style>
+        .gridview-pagination a {
+            margin-right: 10px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js" integrity="sha384-M2U1sEJF3JdUwsf2KsUZl31q3o8Y9S6V5cz/LOLZGJPFk4c5Gc6GT1zNO/kfOJ5a" crossorigin="anonymous"></script>
+
+    <style>
+        .drawer {
+            display: none;
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 350px;
+            background-color: #fff;
+            box-shadow: -1px 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 20px;
+        }
+
+            .drawer.show {
+                display: block;
+            }
+
+        div.scroll {
+            overflow-x: auto;
+            white-space: nowrap;
+            max-width: 19%;
+            height: auto
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .close-button {
+            cursor: pointer;
+        }
+
+        .small-font {
+            font-size: 14px;
+        }
+
+        .page-container {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .pagination-container {
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .app-search .position-relative {
+            display: flex;
+        }
+
+        .app-search input {
+            border-radius: 0;
+        }
+
+        .app-search .btn {
+            border-radius: 0;
+        }
+
+        .app-search .input-group-append {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .drawer-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .drawer-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    </style>
+    <style>
+        .custom-dropdown-container {
+            position: relative;
+        }
+
+        .custom-dropdown {
+            padding-right: 25px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"%3E%3Cpath stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /%3E%3C/svg%3E') no-repeat right center;
+            background-size: 16px;
+        }
+    </style>
+    <style>
+        .highlighted {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+        }
+    </style>
+    <style>
+        .view-link {
+            color: grey;
+        }
+
+        .edit-link {
+            color: blue;
+        }
+
+        .comment-link {
+            color: orange;
+        }
+
+        .phone-link {
+            color: #19b512;
+        }
+
+        .delete-link {
+            color: red;
+        }
+    </style>
+    <style>
+        .pagination-container {
+            display: flex;
+            align-items: center;
+        }
+
+            .pagination-container button,
+            .pagination-container select {
+                margin: 0;
+            }
+
+        .custom-gridview {
+            border-left: none;
+            border-right: none;
+        }
+
+            .custom-gridview th,
+            .custom-gridview td {
+                border-left: none;
+                border-right: none;
+            }
+    </style>
+    <style>
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            animation: fadeInOverlay 0.3s ease-in-out;
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 20px;
+            max-width: 400px;
+            height: 200px;
+            animation: fadeInPopup 0.3s ease-in-out;
+        }
+
+        #phonePopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 20px;
+            max-width: 400px;
+            height: 200px;
+            animation: fadeInPopup 0.3s ease-in-out;
+        }
+
+
+        #DeletePopUp {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 20px;
+            max-width: 400px;
+            height: 200px;
+            animation: fadeInPopup 0.3s ease-in-out;
+        }
+
+        #DeleteMessage {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            padding: 20px;
+            max-width: 400px;
+            height: 200px;
+            animation: fadeInPopup 0.3s ease-in-out;
+        }
+
+        @keyframes fadeInOverlay {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInPopup {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    </style>
+    <style>
+        #phonePopupPhoneNumber,
+        #phonePopupMobileNumber,
+        #phonePopupLabels {
+            font-size: 16px;
+        }
+
+        .light-border {
+            border-color: lightgrey;
+        }
+    </style>
+
+    <style>
+        .btn-signin, .btn-signout {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px; /* Set a fixed width */
+            height: 30px; /* Set a fixed height */
+            padding: 0;
+            border: 1px solid red;
+            background: transparent;
+            box-shadow: none; /* Remove default box-shadow */
+            background-size: cover; /* Ensure image covers button */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent repeating the background image */
+            background-color: transparent; /* Ensure no background color is applied */
+        }
+
+        .btn-signin {
+            background-image: url('../../assets/images/sandclock.png'); /* URL for the Sign In image */
+            padding-right: 10px;
+        }
+
+        .btn-signout {
+            background-image: url('../../assets/images/sandclock.png'); /* URL for the Sign Out image */
+            padding-right: 10px;
+        }
+
+        .dropdown-menu {
+            margin-top: 20px; /* Space between button and dropdown */
+        }
+    </style>
+
+
+
+</head>
+
+<body data-sidebar="dark">
+    <form method="post" action="./ViewAllTask" id="form1" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZMrg9ayJl3-TcfwYZ4LR3eOyAQtqNMJ_GMRfr20mO2qA7SUxC6Nk1s2BqIP7Nynviw2&amp;t=638548996745690144" type="text/javascript"></script>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="4AD55641" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="F8ThBcK515AeRuBserEuGroPX1fuRX8z0TY10bpbRudSC9m1gvNR9n5gKsXFR61JR7hVpYSfZ1jrpNmYLMfnuKHBweQONblv9fa87Q8zpCKMTododKOb1Qxng9IBVPJIGhq/gDOByw0vVGX15MJ9e3R3AxOYz4ULNwTteD+uJ+96ZpE5pOAMl9oj0VTuNC+s0fmWe9E4wtu6o6um4bSybZ/jn6LPv8eMr6cFUocCGw/cEZ9BN8TXF/tm03wTQiWwWJyn6F0yXZHyq04kv+6fULKA84hyW7OnBnWIDIQ3T8cnZtodVJzVYSYmL2OeSBQV2iaTsB0Yq6aLOhqbCU3mWJ0UsSVDokpfgpwMenUkRB4LmcZHGHL+bD72i6cknWu32jbUoTSB4ZBg7eBte5O0L3TFnJhLKqSOqlbk9w2osnwiqj/dDopyfpVTPjPoEjQOQL9/Fkaf1B6RKzm2IS04gU2is0z4+XZoPXxa5R4GgNIhCVpqK7usToOYV3EY6+LmNohNfriTG4essCf3aWcSyMUNqjXF7s/O5Kvz88zHbKXKZNHYbc9xwigwfHuO/WKktSR8NoqjwELy97joFHP9djG3P6SzmPmqOhJLtVtmI6k=" />
+</div>
+        <scriptmanager id="ScriptManager1"></scriptmanager>
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+            <header id="page-topbar">
+                <div class="navbar-header" style="background-color: #FDAB5D;">
+                    <div class="d-flex">
+                        #
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box">
+                            <a href="" class="logo logo-dark">
+                                <span class="logo-sm">
+                                    <img src="../../assets/images/logo.svg" alt="" height="22">
+                                </span>
+                                <span class="logo-lg">
+                                    <img src="../../assets/images/logo-dark.png" alt="" height="17">
+                                </span>
+                            </a>
+                            <a href="" class="logo logo-light">
+                                <span class="logo-sm">
+                                    <img src="../../assets/images/logo-light.svg" alt="" height="22">
+                                </span>
+                                <span class="logo-lg logo-background" style="float: left;">
+                                    <img src="../../assets/images/alphonsol_logo.png" alt="" height="35">
+                                </span>
+                            </a>
+                        </div>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+
+                        <!-- App Search-->
+                        
+                    </div>
+
+                    <div class="d-flex ">
+
+                        
+                        
+                        
+
+
+                        <div class="dropdown d-inline-block mt-3">
+
+
+                            
+
+                            <input type="submit" name="ctl00$btnSignOut" value="" id="btnSignOut" title="Click To Sign Out" class="btn btn-signout header-item waves-effect sign-out-btn" AlternateText="Sign Out" style="margin-left: 10px;" />
+
+                            
+
+
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                                aria-labelledby="page-header-notifications-dropdown">
+                                <div class="p-3">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h6 class="m-0" key="t-notifications">Notifications </h6>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="#!" class="small" key="t-view-all">View All</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-simplebar style="max-height: 230px;">
+                                </div>
+                                <div class="p-2 border-top d-grid">
+                                    <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                                        <i class="mdi mdi-arrow-right-circle me-1"></i><span key="t-view-more">View More..</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div style="text-align: center; padding-right: 0px; margin: auto; width: 50%; margin-top: 15px;">
+                            <span id="lblSignIntext" style="color: black;"></span>
+                            <span id="lblSignInTime" style="color: black;">00:40</span>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+
+                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <img id="userAvatar" class="rounded-circle header-profile-user" src="../../assets/images/user.png" alt="Header Avatar" />
+                                <span id="txtuserName" class="d-none d-xl-inline-block ms-1" style="color: #000000; font-size: 14px;">AlphonsolA</span>
+                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+
+
+
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <!-- item-->
+                                <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle me-1"></i><span key="t-profile">Profile</span></a>
+                                <a class="dropdown-item d-block" href="#"><span class="badge bg-success float-end">11</span><i class="bx bx-wrench font-size-16 align-middle me-1"></i> <span key="t-settings">Settings</span></a>
+                                <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle me-1"></i><span key="t-lock-screen">Lock screen</span></a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="/view/authentication/login.aspx">
+                                    <i class="bx bx-power-off font-size-16 align-middle me-1 text-danger"></i>
+                                    <span key="t-logout">Logout</span>
+                                </a>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+                <div data-simplebar class="h-100">
+                    <div id="sidebar-menu">
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title" key="t-menu">Menu</li>
+                            
+                                    <li>
+                                        
+
+                                        <a href='/View/Modules/Home.aspx' class=''>
+                                            <i class='bx bx-home-circle'></i>
+                                            <span key="t-dashboards">Home</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="true">
+                                            
+                                        </ul>
+                                    </li>
+                                
+                                    <li>
+                                        
+
+                                        <a href='javascript:void(0);' class='has-arrow waves-effect'>
+                                            <i class='bx bxs-user-detail'></i>
+                                            <span key="t-dashboards">User Details</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="true">
+                                            
+                                                    <li>
+                                                        <a id="rptMainAndSubMenu_rptSubMenu_1_SubMenuLink_0" Key="t-default" href="/View/Modules/Viewuser.aspx">Users</a>
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <a id="rptMainAndSubMenu_rptSubMenu_1_SubMenuLink_1" Key="t-default" href="/View/Modules/ViewassignRole.aspx">Assign Role</a>
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <a id="rptMainAndSubMenu_rptSubMenu_1_SubMenuLink_2" Key="t-default" href="/View/Modules/viewAssignRights.aspx">Assign Rights</a>
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <a id="rptMainAndSubMenu_rptSubMenu_1_SubMenuLink_3" Key="t-default" href="/View/Authentication/changePassword.aspx">Change Password</a>
+                                                    </li>
+                                                
+                                        </ul>
+                                    </li>
+                                
+                                    <li>
+                                        
+
+                                        <a href='javascript:void(0);' class='has-arrow waves-effect'>
+                                            <i class='bx bx-task'></i>
+                                            <span key="t-dashboards">Task Details</span>
+                                        </a>
+                                        <ul class="sub-menu" aria-expanded="true">
+                                            
+                                                    <li>
+                                                        <a id="rptMainAndSubMenu_rptSubMenu_2_SubMenuLink_0" Key="t-default" href="/View/Modules/UserViewTask.aspx">View Task</a>
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <a id="rptMainAndSubMenu_rptSubMenu_2_SubMenuLink_1" Key="t-default" href="/View/Modules/ViewAllTask.aspx">Employee Task</a>
+                                                    </li>
+                                                
+                                                    <li>
+                                                        <a id="rptMainAndSubMenu_rptSubMenu_2_SubMenuLink_2" Key="t-default" href="/View/Modules/ProjectDetails2.aspx">View Project</a>
+                                                    </li>
+                                                
+                                        </ul>
+                                    </li>
+                                
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18"></h4>
+
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end page title -->
+                        
+    <input type="hidden" name="ctl00$ContentPlaceHolder1$hdnClickedRoleId" id="ContentPlaceHolder1_hdnClickedRoleId" />
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h2 class="card-title mb-4 d-flex justify-content-between align-items-center" style="font-size: 22px;">&nbsp;Task List
+    <div class="d-flex justify-content-end align-items-center">
+        <div class="app-search d-none d-lg-block">
+            <div class="position-relative">
+                <input type="text" class="form-control" id="searchInput" placeholder="Search..." onkeydown="searchOnEnter(event)">
+                <span class="bx bx-search-alt"></span>
+            </div>
+        </div>
+        <button onclick="__doPostBack('ctl00$ContentPlaceHolder1$Button4','')" id="ContentPlaceHolder1_Button4" class="btn btn-outline-dark ms-2 light-border" title="Advance Search">
+            <i class="bx bx-search-alt"></i>&nbsp;Advance Search
+        </button>
+        &nbsp;
+       <button onclick="__doPostBack('ctl00$ContentPlaceHolder1$btn_exportexcel','')" id="ContentPlaceHolder1_btn_exportexcel" class="btn btn-outline-dark ms-2 light-border" title="Export Excel">
+     <i class="bx bx-search-alt"></i>&nbsp;Export Excel
+ </button>
+ 
+        
+    </div>
+                    </h2>
+
+                    <div class="overlay" onclick="closeFilterDrawer()"></div>
+
+                    
+
+                    <div id="filterDrawer" class="drawer">
+                        <div class="drawer-header">
+                            <span>Filter</span>
+                            <button class="close-button" onclick="closeFilterDrawer()">Close</button>
+                        </div>
+                        <br />
+                        <div class="drawer-header">
+                            <span class="font-weight-bold" style="font-size: 20px; color: black;">Filter</span>
+                            <button class="close-button" onclick="closeFilterDrawer()" style="background: none; border: none; font-size: 20px; color: lightgrey;">✖</button>
+
+                        </div>
+                        <hr style="border-color: lightgrey; margin-top: 10px; width: 100%;">
+                        <div class="drawer-content">
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <label for="ddlSearchOption" style="font-size: 14px;">Search By:</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select name="ctl00$ContentPlaceHolder1$ddlsearchp" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ddlsearchp\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_ddlsearchp" class="form-control">
+
+</select>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+
+                            
+
+                            <!-- Status Panel -->
+                            
+
+                            <!-- Date Range Panel -->
+                            
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <hr style="border-color: lightgrey; margin-top: 10px; width: 100%;">
+                            <div class="row mt-2">
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-end align-items-center">
+
+                                        
+                                        <input type="submit" name="ctl00$ContentPlaceHolder1$Btn_Search" value="Search" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$Btn_Search&quot;, &quot;&quot;, true, &quot;submitvalidation&quot;, &quot;&quot;, false, false))" id="ContentPlaceHolder1_Btn_Search" class="btn btn-primary ms-2" />
+                                        <input type="submit" name="ctl00$ContentPlaceHolder1$Btnclear" value="Clear" id="ContentPlaceHolder1_Btnclear" class="btn btn-primary ms-2" />
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <span id="ContentPlaceHolder1_lblMessage" style="color:Red;"></span>
+
+
+                    <br />
+                    <div class="table-responsive">
+    <div>
+	<table cellspacing="0" rules="all" class="table custom-gridview" border="1" id="ContentPlaceHolder1_gridview" style="border-collapse:collapse;margin: 0 auto;">
+		<tr>
+			<th class="header-cell" scope="col">SR No</th><th class="header-cell" scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gridview&#39;,&#39;Sort$emp_name&#39;)">Employee Name</a></th><th class="header-cell" scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gridview&#39;,&#39;Sort$project_name&#39;)">Project Name</a></th><th class="header-cell" scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gridview&#39;,&#39;Sort$Task&#39;)">Task</a></th><th class="header-cell" scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gridview&#39;,&#39;Sort$TaskDescription&#39;)">Task Description</a></th><th class="header-cell" scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gridview&#39;,&#39;Sort$TaskStartDate&#39;)">Start Date</a></th><th class="header-cell" scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gridview&#39;,&#39;Sort$TaskEndDate&#39;)">End Date</a></th><th class="header-cell" scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gridview&#39;,&#39;Sort$AssignBy&#39;)">Assigned By</a></th><th class="header-cell" scope="col"><a href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$gridview&#39;,&#39;Sort$Status&#39;)">Status</a></th>
+		</tr><tr>
+			<td style="width:80px;">
+                    1
+                </td><td style="width:130px;">AlphonsolA</td><td style="width:130px;">Test</td><td style="width:130px;">test</td><td style="width:130px;">test</td><td style="width:130px;">09-04-2024</td><td style="width:130px;">09-04-2024</td><td style="width:130px;">bhagyashree</td><td style="width:130px;">To Do</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    2
+                </td><td style="width:130px;">VaishnaviT</td><td style="width:130px;">Healthieu</td><td style="width:130px;">test</td><td style="width:130px;">test</td><td style="width:130px;">09-04-2024</td><td style="width:130px;">09-04-2024</td><td style="width:130px;">bhagyashree</td><td style="width:130px;">In Progress</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    3
+                </td><td style="width:130px;">AlphonsolA</td><td style="width:130px;">Healthieu</td><td style="width:130px;">test</td><td style="width:130px;">test</td><td style="width:130px;">09-04-2024</td><td style="width:130px;">09-04-2024</td><td style="width:130px;">bhagya</td><td style="width:130px;">To Do</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    4
+                </td><td style="width:130px;">VaibhavS</td><td style="width:130px;">Test</td><td style="width:130px;">TEST</td><td style="width:130px;">ASDASDAS</td><td style="width:130px;">09-04-2024</td><td style="width:130px;">09-05-2024</td><td style="width:130px;">bhagyashre</td><td style="width:130px;">To Do</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    5
+                </td><td style="width:130px;">Sagar</td><td style="width:130px;">HI code data</td><td style="width:130px;">Teav</td><td style="width:130px;">Tshs</td><td style="width:130px;">09-01-2024</td><td style="width:130px;">09-05-2024</td><td style="width:130px;">Bhagya</td><td style="width:130px;">To Do</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    6
+                </td><td style="width:130px;">AlphonsolA</td><td style="width:130px;">Hello</td><td style="width:130px;">Hello project</td><td style="width:130px;">h</td><td style="width:130px;">08-30-2024</td><td style="width:130px;">09-01-2024</td><td style="width:130px;">bhagyshree mam</td><td style="width:130px;">To Do</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    7
+                </td><td style="width:130px;">AlphonsolA</td><td style="width:130px;">HI code data</td><td style="width:130px;">add task</td><td style="width:130px;">create page for add task</td><td style="width:130px;">08-28-2024</td><td style="width:130px;">08-28-2024</td><td style="width:130px;">mam</td><td style="width:130px;">Complete</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    8
+                </td><td style="width:130px;">AlphonsolA</td><td style="width:130px;">Hello 123</td><td style="width:130px;">gfh</td><td style="width:130px;">frd</td><td style="width:130px;">08-27-2024</td><td style="width:130px;">08-27-2024</td><td style="width:130px;">mam</td><td style="width:130px;">To Do</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    9
+                </td><td style="width:130px;">ArohiT</td><td style="width:130px;">&nbsp;</td><td style="width:130px;">Task New</td><td style="width:130px;">update</td><td style="width:130px;">08-22-2024</td><td style="width:130px;">08-22-2024</td><td style="width:130px;">mam</td><td style="width:130px;">To Do</td>
+		</tr><tr>
+			<td style="width:80px;">
+                    10
+                </td><td style="width:130px;">AlphonsolA</td><td style="width:130px;">Test</td><td style="width:130px;">hello project</td><td style="width:130px;">hhhhhh</td><td style="width:130px;">08-22-2024</td><td style="width:130px;">08-22-2024</td><td style="width:130px;"> mam</td><td style="width:130px;">Complete</td>
+		</tr>
+	</table>
+</div>
+    <div class="pagination-container" style="font-size: 14px; color: black;">
+        <input type="submit" name="ctl00$ContentPlaceHolder1$btnPrevPage" value="Previous" id="ContentPlaceHolder1_btnPrevPage" onmouseover="this.style.backgroundColor=&#39;lightgrey&#39;; this.style.color=&#39;black&#39;;" onmouseout="this.style.backgroundColor=&#39;white&#39;; this.style.color=&#39;black&#39;;" style="background-color: white; color: black; border: 1px solid #ddd; padding: 5px 10px; margin: 2px;" />
+        <div class="scroll">
+            
+                    <input type="submit" name="ctl00$ContentPlaceHolder1$rptPageNumbers$ctl00$btnPageNumber" value="1" id="ContentPlaceHolder1_rptPageNumbers_btnPageNumber_0" disabled="disabled" class="aspNetDisabled" onmouseover="this.style.backgroundColor=&#39;lightgrey&#39;; this.style.color=&#39;black&#39;;" onmouseout="this.style.backgroundColor=&#39;white&#39;; this.style.color=&#39;black&#39;;" style="background-color: white; color: black; border: 1px solid #ddd; padding: 5px 10px; margin: 2px;" />
+                
+                    <input type="submit" name="ctl00$ContentPlaceHolder1$rptPageNumbers$ctl01$btnPageNumber" value="2" id="ContentPlaceHolder1_rptPageNumbers_btnPageNumber_1" onmouseover="this.style.backgroundColor=&#39;lightgrey&#39;; this.style.color=&#39;black&#39;;" onmouseout="this.style.backgroundColor=&#39;white&#39;; this.style.color=&#39;black&#39;;" style="background-color: white; color: black; border: 1px solid #ddd; padding: 5px 10px; margin: 2px;" />
+                
+                    <input type="submit" name="ctl00$ContentPlaceHolder1$rptPageNumbers$ctl02$btnPageNumber" value="3" id="ContentPlaceHolder1_rptPageNumbers_btnPageNumber_2" onmouseover="this.style.backgroundColor=&#39;lightgrey&#39;; this.style.color=&#39;black&#39;;" onmouseout="this.style.backgroundColor=&#39;white&#39;; this.style.color=&#39;black&#39;;" style="background-color: white; color: black; border: 1px solid #ddd; padding: 5px 10px; margin: 2px;" />
+                
+        </div>
+
+        <input type="submit" name="ctl00$ContentPlaceHolder1$btnNextPage" value="Next" id="ContentPlaceHolder1_btnNextPage" onmouseover="this.style.backgroundColor=&#39;lightgrey&#39;; this.style.color=&#39;black&#39;;" onmouseout="this.style.backgroundColor=&#39;white&#39;; this.style.color=&#39;black&#39;;" style="background-color: white; color: black; border: 1px solid #ddd; padding: 5px 10px; margin: 2px;" />
+
+        <select name="ctl00$ContentPlaceHolder1$ddlPageSelector" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ContentPlaceHolder1$ddlPageSelector\&#39;,\&#39;\&#39;)&#39;, 0)" id="ContentPlaceHolder1_ddlPageSelector" style="background-color: white; color: black; border: 1px solid #ddd; padding: 5px 10px; margin: 2px; margin-left: auto;">
+	<option selected="selected" value="1">1/3</option>
+	<option value="2">2/3</option>
+	<option value="3">3/3</option>
+
+</select>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end col -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function showPatientSavedMessage(status, remark) {
+            Swal.fire({
+
+                icon: status === "Success" ? "success" : "error",
+                text: remark,
+                timer: 4000,
+                showConfirmButton: false
+            });
+        }
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Append initial sorting icons to all header cells
+            $('.header-cell').append('<i class="fa fa-sort fa-lg"></i>');
+        });
+    </script>
+    <script>
+        function showDeleteMessage() {
+                
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('DeleteMessage').style.display = 'block';
+        }
+        function hideDeleteMsg() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('DeleteMessage').style.display = 'none';
+        }
+    </script>
+    <script>
+        function showSaveUpdate() {
+                
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('SaveUpdate').style.display = 'block';
+        }
+        function hideDeleteMsg() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('SaveUpdate').style.display = 'none';
+        }
+
+
+    </script>
+    <script>
+        function showPopup() {
+                
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('popup').style.display = 'block';
+        }
+        function hidePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+
+    <script> 
+
+        function initializeSearch() {
+            $(document).on('input', '#searchInput', function () {
+                var searchTerm = $(this).val().toLowerCase();
+                filterGrid(searchTerm);
+            });
+            $(document).on('keydown', '#searchInput', searchOnEnter);
+        }
+
+
+        function filterGrid(searchTerm) {
+ ContentPlaceHolder1_gridview 
+            $('#ContentPlaceHolder1_gridview tr:has(td)').hide();
+
+            if (searchTerm === '') {
+                $('#ContentPlaceHolder1_gridview tr:has(td)').show();
+     } else {
+         var genderColumnIndex = 3;
+
+         $('#ContentPlaceHolder1_gridview tr:has(td)').filter(function () {
+                    var found = false;
+                    $(this).find('td').each(function (index) {
+                        var cellText = $(this).text().toLowerCase();
+
+                        if (index === genderColumnIndex && cellText.startsWith(searchTerm)) {
+                            found = true;
+                            return false;
+                        }
+
+                        if (index !== genderColumnIndex && cellText.includes(searchTerm)) {
+                            found = true;
+                            return false;
+                        }
+                    });
+                    return found;
+                }).show();
+            }
+        }
+
+
+        function searchOnEnter(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                var searchTerm = $('#searchInput').val().toLowerCase();
+                filterGrid(searchTerm);
+            }
+        }
+
+
+        $(document).ready(function () {
+            initializeSearch();
+        });
+    </script>
+
+
+
+    <script>
+
+            function showPopupDelete() {
+                    
+                document.getElementById('overlay').style.display = 'block';
+            document.getElementById('DeletePopUp').style.display = 'block';
+        }
+
+            function hidePopup() {
+                document.getElementById('overlay').style.display = 'none';
+            document.getElementById('DeletePopUp').style.display = 'none';
+        }
+
+    </script>
+
+                    </div>
+                    <!-- container-fluid -->
+                </div>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script>
+                                © Alphonsol.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by Alphonsol
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </form>
+
+    <!-- Right Sidebar -->
+    <div class="right-bar">
+        <div data-simplebar class="h-100">
+            <div class="rightbar-title d-flex align-items-center px-3 py-4">
+
+                <h5 class="m-0 me-2">Settings</h5>
+
+                <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                    <i class="mdi mdi-close noti-icon"></i>
+                </a>
+            </div>
+
+            <!-- Settings -->
+            <hr class="mt-0" />
+            <h6 class="text-center mb-0">Choose Layouts</h6>
+
+            <div class="p-4">
+                <div class="mb-2">
+                    <img src="../../assets/images/layouts/layout-1.jpg" class="img-thumbnail" alt="layout images">
+                </div>
+
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input theme-choice" type="checkbox" id="light-mode-switch" checked>
+                    <label class="form-check-label" for="light-mode-switch">Light Mode</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="../../assets/images/layouts/layout-2.jpg" class="img-thumbnail" alt="layout images">
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input theme-choice" type="checkbox" id="dark-mode-switch">
+                    <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="../../assets/images/layouts/layout-3.jpg" class="img-thumbnail" alt="layout images">
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input theme-choice" type="checkbox" id="rtl-mode-switch">
+                    <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
+                </div>
+
+                <div class="mb-2">
+                    <img src="../../assets/images/layouts/layout-4.jpg" class="img-thumbnail" alt="layout images">
+                </div>
+                <div class="form-check form-switch mb-5">
+                    <input class="form-check-input theme-choice" type="checkbox" id="dark-rtl-mode-switch">
+                    <label class="form-check-label" for="dark-rtl-mode-switch">Dark RTL Mode</label>
+                </div>
+            </div>
+
+        </div>
+        <!-- end slimscroll-menu-->
+    </div>
+    <!-- /Right-bar -->
+    <!-- Right bar overlay-->
+    <div class="rightbar-overlay"></div>
+    <!-- JAVASCRIPT -->
+
+
+    <script src="../../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/libs/metismenu/metisMenu.min.js"></script>
+    <script src="../../assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="../../assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- apexcharts -->
+    <script src="../../assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <!-- dashboard init -->
+    <script src="../../assets/js/pages/dashboard.init.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <script>
+        function showPageAccessMessage(status, remark) {
+            Swal.fire({
+                icon: status === "Success" ? "success" : "error",
+                text: remark,
+                timer: 4000,
+                showConfirmButton: false
+            });
+        }
+    </script>
+
+    <!-- App js -->
+    <script src="../../assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var username = sessionStorage.getItem('username');
+            if (username) {
+                document.getElementById('usernamePlaceholder').textContent = username;
+            }
+        });
+        /$(document).ready(function () { $('.selectBox').SumoSelect(); });/
+        function blockSpecialChar(e) {
+            var k;
+            document.all ? k = e.keyCode : k = e.which;
+            return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || k == 55 || (k >= 48 && k <= 57) || k == 45);
+        }
+        function setTwoNumberDecimal(event) {
+            this.value = parseFloat(this.value).toFixed(2);
+        }
+        //$('#txtOccupancy').on('keypress', function (event) {
+        //    var regex = new RegExp("[a-zA-Z0-9,.-\\s]+$");
+        //    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+        //    if (!regex.test(key)) {
+        //        event.preventDefault();
+        //        return false;
+        //    }
+        //});
+    </script>
+
+
+
+
+
+
+    <style>
+        /* Make the icon size larger */
+        .sign-in-btn i,
+        .sign-out-btn i {
+            font-size: 1.5em; /* Adjust as needed */
+        }
+
+        /* Initially hide the text */
+        .sign-in-btn .btn-text,
+        .sign-out-btn .btn-text {
+            display: none;
+        }
+
+        /* Show the text on hover */
+        .sign-in-btn:hover .btn-text,
+        .sign-out-btn:hover .btn-text {
+            display: inline;
+        }
+    </style>
+    <style>
+        .navbar-brand-box {
+            display: flex;
+            justify-content: space-between; /* Aligns items to both ends */
+            align-items: center; /* Centers items vertically */
+            margin-left: -10px;
+        }
+
+        .logo-background {
+            background-color: white;
+            display: inline-block;
+            padding: 5px 10px; /* Horizontal padding for left and right sides */
+            border-radius: 5px; /* Optional: Adds rounded corners */
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+        }
+    </style>
+</body>
+    
+</html>
